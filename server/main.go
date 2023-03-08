@@ -29,6 +29,7 @@ func genDetails(n int) []string {
 }
 
 func (s *server) GetFoos(context.Context, *pb.GetFoosRequest) (*pb.GetFoosResponse, error) {
+	log.Printf("GetFoos")
 	foos := make([]*pb.Foo, 10)
 	for i := range foos {
 		foos[i] = &pb.Foo{
@@ -39,7 +40,8 @@ func (s *server) GetFoos(context.Context, *pb.GetFoosRequest) (*pb.GetFoosRespon
 	return &pb.GetFoosResponse{Foos: foos}, nil
 }
 
-func (s *server) GetFoobars(context.Context, *pb.GetFoobarsRequest) (*pb.GetFoobarsResponse, error) {
+func (s *server) GetFoobars(ctx context.Context, req *pb.GetFoobarsRequest) (*pb.GetFoobarsResponse, error) {
+	log.Printf("GetFoobars [foo_id=%s]", req.GetFooId())
 	foobars := make([]*pb.Foobar, 10)
 	for i := range foobars {
 		foobars[i] = &pb.Foobar{

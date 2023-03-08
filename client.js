@@ -1,6 +1,5 @@
 const yargs = require('yargs/yargs');
 const protoLoader = require('@grpc/proto-loader');
-const grpc = require('@grpc/grpc-js');
 const path = require('path');
 const winston = require('winston');
 
@@ -49,13 +48,15 @@ const argv = yargs(process.argv.slice(2))
       default: 'localhost:50051',
       alias: 'H',
     },
-    // silent: { type: 'boolean', default: false, alias: 's' },
+    legacyGrpc: { type: 'boolean', default: false },
     parallelism: { type: 'number', default: 3, alias: 'p' },
     delayMs: { type: 'number', default: 50, alias: 'd' },
   })
   .parseSync();
 
 const PROTO_SRC_ROOT = path.join(__dirname, 'proto');
+
+const grpc = argv.legacyGrpc ? require('grpc') : require('@grpc/grpc-js');
 
 const protoRoot = grpc.loadPackageDefinition(
   protoLoader.loadSync(
@@ -119,6 +120,7 @@ async function main() {
     host: argv.host,
     parallelism: argv.parallelism,
     delayMs: argv.delayMs,
+    legacyGrpc: argv.legacyGrpc,
   });
 
   async function loop(id) {
