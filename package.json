@@ -10,6 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "@grpc/grpc-js": "^1.8.12",
-    "@grpc/proto-loader": "^0.7.5"
+    "@grpc/proto-loader": "^0.7.5",
+    "winston": "^3.8.2",
+    "yargs": "^17.7.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }
