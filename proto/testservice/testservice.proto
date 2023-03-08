@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package testservice;
+
+option go_package = "github.com/be9/grpc-js-go-test/pkg/testservice";
+
+service TestService {
+  rpc GetFoos(GetFoosRequest) returns (GetFoosResponse);
+  rpc GetFoobars(GetFoobarsRequest) returns (GetFoobarsResponse);
+}
+
+message GetFoosRequest {}
+
+message GetFoosResponse {
+  repeated Foo foos = 1;
+}
+
+message Foo {
+  string id = 1;
+  repeated string details = 2;
+}
+
+message GetFoobarsRequest {
+  string foo_id = 1;
+}
+
+message GetFoobarsResponse {
+  repeated Foobar foobars = 1;
+}
+
+message Foobar {
+  string id = 1;
+  repeated string details = 2;
+}
