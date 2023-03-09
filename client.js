@@ -93,6 +93,9 @@ async function requestFoobars(fooId) {
   return txns.foobars;
 }
 
+const delay = async (delayMs) =>
+  await new Promise((resolve) => setTimeout(resolve, delayMs));
+
 async function requestAll() {
   const { foos } = await new Promise((resolve, reject) => {
     client.GetFoos({}, (err, resp) => {
@@ -105,12 +108,10 @@ async function requestAll() {
   });
 
   for (const foo of foos) {
+    await delay(argv.delayMs);
     await requestFoobars(foo.id);
   }
 }
-
-const delay = async (delayMs) =>
-  await new Promise((resolve) => setTimeout(resolve, delayMs));
 
 let successes = 0,
   failures = 0;
