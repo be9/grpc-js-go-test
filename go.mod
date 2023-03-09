@@ -15,4 +15,4 @@ require (
 	google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f // indirect
 )
 
-replace google.golang.org/grpc v1.53.0 => github.com/be9/grpc-go v0.0.0-20230309060723-da7335f3c644
+replace google.golang.org/grpc v1.53.0 => github.com/be9/grpc-go v0.0.0-20230309061206-b544ac12e4a6
