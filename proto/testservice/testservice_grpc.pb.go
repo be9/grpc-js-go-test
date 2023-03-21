@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TestService_GetFoos_FullMethodName    = "/testservice.TestService/GetFoos"
-	TestService_GetFoobars_FullMethodName = "/testservice.TestService/GetFoobars"
+	TestService_GetFoos_FullMethodName    = "/sandcastle.TestService/GetFoos"
+	TestService_GetFoobars_FullMethodName = "/sandcastle.TestService/GetFoobars"
 )
 
 // TestServiceClient is the client API for TestService service.
@@ -129,7 +129,7 @@ func _TestService_GetFoobars_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TestService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "testservice.TestService",
+	ServiceName: "sandcastle.TestService",
 	HandlerType: (*TestServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

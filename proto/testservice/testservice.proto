@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package testservice;
+package sandcastle;
 
 option go_package = "github.com/be9/grpc-js-go-test/pkg/testservice";
 

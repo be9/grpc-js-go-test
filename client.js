@@ -68,7 +68,7 @@ const protoRoot = grpc.loadPackageDefinition(
   ),
 );
 
-const client = new protoRoot.testservice.TestService(
+const client = new protoRoot.sandcastle.TestService(
   argv.host,
   argv.host.endsWith(':443')
     ? grpc.credentials.createSsl()
