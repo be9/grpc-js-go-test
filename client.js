@@ -51,6 +51,7 @@ const argv = yargs(process.argv.slice(2))
     legacyGrpc: { type: 'boolean', default: false },
     parallelism: { type: 'number', default: 3, alias: 'p' },
     delayMs: { type: 'number', default: 50, alias: 'd' },
+    forceSsl: { type: 'boolean', default: false },
   })
   .parseSync();
 
@@ -70,7 +71,7 @@ const protoRoot = grpc.loadPackageDefinition(
 
 const client = new protoRoot.sandcastle.TestService(
   argv.host,
-  argv.host.endsWith(':443')
+  argv.forceSsl || argv.host.endsWith(':443')
     ? grpc.credentials.createSsl()
     : grpc.credentials.createInsecure(),
 );
@@ -122,6 +123,7 @@ async function main() {
     parallelism: argv.parallelism,
     delayMs: argv.delayMs,
     legacyGrpc: argv.legacyGrpc,
+    forceSsl: argv.forceSsl,
   });
 
   async function loop(id) {
